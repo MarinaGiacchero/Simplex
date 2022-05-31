@@ -1,0 +1,31 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd ../react && npm start",
+    "server": "NodeJs server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm start server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "jquery": "^3.6.0",
+    "knex": "^0.95.11",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.2",
+    "sanitize": "^2.1.0",
+    "sequelize": "^6.7.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  }
+}
