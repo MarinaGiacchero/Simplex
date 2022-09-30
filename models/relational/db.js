@@ -24,6 +24,7 @@ db.mysql.init();
 
 //Models/tables
 db.personagem = require('./personagem.js')(db.mysql,       db.Sequelize);
+db.tramitar = require('./tramitar.js')(db.mysql,       db.Sequelize);
 db.genero = require('./genero.js')(db.mysql,       db.Sequelize);
 db.idioma = require('./idioma.js')(db.mysql,       db.Sequelize);
 db.caracterEspecial = require('./caracterEspecial.js')(db.mysql,       db.Sequelize);

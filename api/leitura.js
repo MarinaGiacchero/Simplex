@@ -8,7 +8,7 @@ var Feedback=  function leitura(res, i){
     codigo=0;
     genero= '';
     i=0
-    while(i<100000){
+    while(i<10){
     lidoTramitar = new getTramitar(codigo, genero);   
     let url="https://legis.senado.leg.br/dadosabertos/materia/situacaoatual/"+i+"?v=3";   
     axios.get(url).then(async function (response) {

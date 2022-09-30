@@ -1,0 +1,5 @@
+mudar todas tabelas
+*lembrar de chaves estrangeiras*
+atualizar os dados
+conferir id
+rodar inúmeros códigos
