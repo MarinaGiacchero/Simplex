@@ -14,6 +14,8 @@ const swaggerDocs    = require('./swagger.json')
 
 var routePersonagem             = require('./routes/personagem');
 var routeGenero                 = require('./routes/genero');
+//Tabela matéria
+var routeMateria                = require('./routes/materia');
 //Tabela tramitar
 var routeTramitar               = require('./routes/tramitar'); 
 var routeIdioma                 = require('./routes/idioma');
@@ -64,6 +66,7 @@ app.use(bodyparser.urlencoded({ extended : true}));
 // routePersonagem.configure(app);
  routeGenero.configure(app);
  routeTramitar.configure(app);
+ routeMateria.configure(app);
 // routeIdioma.configure(app);
 // routeCaracterEspecial.configure(app);
 // routeSimbolo.configure(app);

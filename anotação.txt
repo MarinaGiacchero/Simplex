@@ -6,3 +6,21 @@ sequencia:
 
 
 Model -> utilizado para criar as tabelas no banco de dados
+
+(de matéria)
+server.js
+
+-> require('./routes/materia');
+
+-> require('../controller/materia');
+-> (require('./validators/materia.js'))()
+
+-> require('../entity/materia.js'); (preciso mudar os atributos inclusive as estrangeiras - como fazer)
+-> require('../persistence/materia.js');
+
+-> require('./firebase/materia.js');
+-> require('./relational/materia.js');
+
+-> require('models/relational/materia.js'); (alterar atributos)
+
+-> model db
