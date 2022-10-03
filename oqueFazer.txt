@@ -3,3 +3,13 @@ mudar todas tabelas
 atualizar os dados
 conferir id
 rodar inúmeros códigos
+
+
+propoe=
+-id
+-idAutor
+-idMateria
+
+Autor= 
+-id
+-nome

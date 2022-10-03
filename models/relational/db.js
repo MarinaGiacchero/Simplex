@@ -1,7 +1,7 @@
 /**
  * @author: Helen de Freitas Santos
- * @author: Matheus Shinji Fukuyama
- * @date: 20/11/2021
+ * @author: Marina Giacchero
+ * @date: 20/11/2022
  * @desc: methods for fetching mysql data
  * Extraído de https://lorenstewart.me/2016/09/12/sequelize-table-associations-joins/
 */
@@ -29,6 +29,8 @@ db.natureza = require('./natureza.js')(db.mysql,       db.Sequelize);
 db.situacao = require('./situacao.js')(db.mysql,       db.Sequelize);
 db.genero = require('./genero.js')(db.mysql,       db.Sequelize);
 db.materia = require('./materia.js')(db.mysql,       db.Sequelize);
+db.historico = require('./historico.js')(db.mysql,       db.Sequelize);
+db.autor = require('./autor.js')(db.mysql,       db.Sequelize);
 db.historico = require('./historico.js')(db.mysql,       db.Sequelize);
 // db.idioma = require('./idioma.js')(db.mysql,       db.Sequelize);
 // db.caracterEspecial = require('./caracterEspecial.js')(db.mysql,       db.Sequelize);

@@ -23,7 +23,11 @@ var routeSituacao               = require('./routes/situacao');
 //Tabela natureza
 var routeNatureza               = require('./routes/natureza');
 //Tabela histórico
-var routeHistorico               = require('./routes/historico');
+var routeHistorico              = require('./routes/historico');
+//Tabela propoe
+var routePropoe                 = require('./routes/propoe');
+//Tabela autor
+var routeAutor                  = require('./routes/autor');
 var routeIdioma                 = require('./routes/idioma');
 var routeCaracterEspecial       = require('./routes/caracterEspecial');
 var routeSimbolo                = require('./routes/simbolo');
@@ -76,7 +80,9 @@ app.use(bodyparser.urlencoded({ extended : true}));
  routeSituacao.configure(app);
  routeNatureza.configure(app);
  routeHistorico.configure(app);
-// routeIdioma.configure(app);
+ routePropoe.configure(app);
+ routeAutor.configure(app);
+ // routeIdioma.configure(app);
 // routeCaracterEspecial.configure(app);
 // routeSimbolo.configure(app);
 // routeStopword.configure(app);
