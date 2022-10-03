@@ -1,6 +1,6 @@
 /**
  * @author: Helen de Freitas Santos
- * @author: Marina Giacchero
+ * @author: Matheus Shinji Fukuyama
  * @date: 07/02/2022
  * @desc: methods for fetching mysql data
 */
@@ -11,19 +11,19 @@ var persistence;
 var DataBase   = require('../models/database.js');
 var dataBase   = new DataBase();
 
- function GeneroPersistence() {
+ function SituacaoPersistence() {
 
     this.getPersistence = 
     function () {    
           return new Promise(function (resolve, reject) {
               if   (globals.dataBaseType == 1) {
-                    var Persistence = require('./relational/genero.js');
+                    var Persistence = require('./relational/situacao.js');
                     var persistence = new Persistence();
                     resolve(persistence);
                   }
               else if   (globals.dataBaseType == 2) {
                   /*firebase ainda não possui o model personagem*/
-                          var Persistence = require('./firebase/genero.js');          
+                          var Persistence = require('./firebase/situacao.js');          
                           var persistence = new Persistence();
                           resolve(persistence);
                   }
@@ -79,4 +79,4 @@ var dataBase   = new DataBase();
 
 }
 
-module.exports = GeneroPersistence;
+module.exports = SituacaoPersistence;

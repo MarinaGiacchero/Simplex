@@ -23,15 +23,18 @@ db.mysql     = mysql;
 db.mysql.init();
 
 //Models/tables
-db.personagem = require('./personagem.js')(db.mysql,       db.Sequelize);
+//db.personagem = require('./personagem.js')(db.mysql,       db.Sequelize);
 db.tramitar = require('./tramitar.js')(db.mysql,       db.Sequelize);
+db.natureza = require('./natureza.js')(db.mysql,       db.Sequelize);
+db.situacao = require('./situacao.js')(db.mysql,       db.Sequelize);
 db.genero = require('./genero.js')(db.mysql,       db.Sequelize);
 db.materia = require('./materia.js')(db.mysql,       db.Sequelize);
+db.historico = require('./historico.js')(db.mysql,       db.Sequelize);
 // db.idioma = require('./idioma.js')(db.mysql,       db.Sequelize);
 // db.caracterEspecial = require('./caracterEspecial.js')(db.mysql,       db.Sequelize);
 // db.simbolo = require('./simbolo.js')(db.mysql,       db.Sequelize);
-// db.stopword = require('./stopword.js')(db.mysql,       db.Sequelize);
-// db.configuracao = require('./configuracao.js')(db.mysql,       db.Sequelize);
+//db.stopword = require('./stopword.js')(db.mysql,       db.Sequelize);
+//db.configuracao = require('./configuracao.js')(db.mysql,       db.Sequelize);
 // db.reducaoLexical = require('./reducaoLexical.js')(db.mysql,       db.Sequelize);
 // db.acentuacao = require('./acentuacao.js')(db.mysql,       db.Sequelize);
 // db.pergunta = require('./pergunta.js')(db.mysql,       db.Sequelize);

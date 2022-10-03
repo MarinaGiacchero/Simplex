@@ -9,27 +9,21 @@
 
  module.exports = (sequelize, DataTypes) => {
     
-    const materia = sequelize.pool.define('materia', {
-        nome:  DataTypes.STRING,
-        sigla: DataTypes.STRING,
-        dataCriacao:  DataTypes.DATE,
-        dataApresentacao: DataTypes.DATE,
+    const historico = sequelize.pool.define('historico', {
+        dataInicio:  DataTypes.DATE,
 
-        idNatureza: {
-          type: DataTypes.INTEGER,
-          references: {
-            model: "natureza",
-            key: "id"
-          } 
-      },
-
-      idSituacao: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "situacao",
-          key: "id"
-        } 
-     },
+        idSituacao: {
+            type: DataTypes.INTEGER,
+            references: {
+              model: "situacao",
+              key: "id"
+        }}, 
+        idMateria: {
+                type: DataTypes.INTEGER,
+                references: {
+                  model: "materia",
+                  key: "id"
+        }}, 
 
         created_at: {
           type: 'TIMESTAMP',
@@ -47,8 +41,8 @@
     
     {
         freezeTableName: true,
-        tableName: 'materia'
+        tableName: 'historico'
     })
 
-    return materia
+    return historico
 }

@@ -18,6 +18,12 @@ var routeGenero                 = require('./routes/genero');
 var routeMateria                = require('./routes/materia');
 //Tabela tramitar
 var routeTramitar               = require('./routes/tramitar'); 
+//Tabela situacao
+var routeSituacao               = require('./routes/situacao');
+//Tabela natureza
+var routeNatureza               = require('./routes/natureza');
+//Tabela histórico
+var routeHistorico               = require('./routes/historico');
 var routeIdioma                 = require('./routes/idioma');
 var routeCaracterEspecial       = require('./routes/caracterEspecial');
 var routeSimbolo                = require('./routes/simbolo');
@@ -67,6 +73,9 @@ app.use(bodyparser.urlencoded({ extended : true}));
  routeGenero.configure(app);
  routeTramitar.configure(app);
  routeMateria.configure(app);
+ routeSituacao.configure(app);
+ routeNatureza.configure(app);
+ routeHistorico.configure(app);
 // routeIdioma.configure(app);
 // routeCaracterEspecial.configure(app);
 // routeSimbolo.configure(app);

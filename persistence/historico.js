@@ -11,19 +11,19 @@ var persistence;
 var DataBase   = require('../models/database.js');
 var dataBase   = new DataBase();
 
- function GeneroPersistence() {
+ function HistoricoPersistence() {
 
     this.getPersistence = 
     function () {    
           return new Promise(function (resolve, reject) {
               if   (globals.dataBaseType == 1) {
-                    var Persistence = require('./relational/genero.js');
+                    var Persistence = require('./relational/historico.js');
                     var persistence = new Persistence();
                     resolve(persistence);
                   }
               else if   (globals.dataBaseType == 2) {
                   /*firebase ainda não possui o model personagem*/
-                          var Persistence = require('./firebase/genero.js');          
+                          var Persistence = require('./firebase/historico.js');          
                           var persistence = new Persistence();
                           resolve(persistence);
                   }
@@ -79,4 +79,4 @@ var dataBase   = new DataBase();
 
 }
 
-module.exports = GeneroPersistence;
+module.exports = HistoricoPersistence;
