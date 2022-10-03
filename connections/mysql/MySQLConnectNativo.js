@@ -15,11 +15,11 @@ function MySQLConnect() {
   this.init = function() {
     this.pool = mysql.createPool({
       connectionLimit: 10,
-      host     : 'ghelt.com.br',
+      host     : 'xxxxx',
       port     :  3306,
-      user     : 'gheltco_desenv',
-      password : 'minhasenhaquerida',
-      database : 'gheltco_mp'
+      user     : 'xxxxx',
+      password : 'xxxxx',
+      database : 'xxxxx'
     });
   };
 

@@ -13,8 +13,8 @@ function MySQLConnect() {
   
   // Init MySql Connection Pool
   this.init = function() {
-    this.pool = new this.Sequelize('gheltco_mp', 'gheltco_desenv', 'minhasenhaquerida', {
-      host:    'ghelt.com.br',
+    this.pool = new this.Sequelize('xxxxx', 'xxxxx', 'xxxxx', {
+      host:    'xxxxx',
       dialect: 'mysql',
       define: {
         timestamps: false
