@@ -45,6 +45,16 @@ var dataBase   = new DataBase();
             persistence.getAll(db, res);
         });
     };
+    
+    this.getLast = async function (res) {
+        let objeto
+         await dataBase.getDataBase(globals.dataBaseType)
+         .then((db) => {
+             objeto= persistence.getLast(db, res);
+            
+         });
+      return objeto;
+     };
 
     // get object by id
     this.getById = function (id, res) {

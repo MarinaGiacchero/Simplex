@@ -7,7 +7,7 @@
 
 var Materia = function(params) {
     this.id              = params.id;
-    this.nome            = params.nome;
+    this.ementa          = params.ementa;
     this.sigla           = params.sigla;
     this.anoCriacao      = params.anoCriacao;
     this.anoApresentacao = params.anoApresentacao;

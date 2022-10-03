@@ -10,10 +10,10 @@
  module.exports = (sequelize, DataTypes) => {
     
     const materia = sequelize.pool.define('materia', {
-        nome:  DataTypes.STRING,
+        ementa:  DataTypes.STRING,
         sigla: DataTypes.STRING,
-        dataCriacao:  DataTypes.DATE,
-        dataApresentacao: DataTypes.DATE,
+        anoCriacao:  DataTypes.STRING,
+        anoApresentacao: DataTypes.DATE,
 
         idNatureza: {
           type: DataTypes.INTEGER,

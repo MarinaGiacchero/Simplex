@@ -7,9 +7,9 @@
 
 
 var validator    = new (require('./validators/materia.js'))()
-var Materia   = require('../entity/materia.js');
+var Materia   = require('../entity/materia');
 const { default: axios } = require('axios');
-var leitura = require('../api/leitura.js');
+var leitura = require('../api/leituraMateria');
 
 function MateriaController() {
     var Persistence  = require('../persistence/materia.js');
@@ -43,15 +43,20 @@ function MateriaController() {
     };
 
     // add one object
-    this.add = function (req, res) {
-        i=0
-        //while(i<10){
-            // console.log("CODIGO A SE GUIR ")
-            // console.log(i)
-        var response = new leitura(res);  
-     //   i++;
-       // }
-    };
+    this.add = async function (req, res) {
+        
+            id=0
+          let objeto= await persistence.getLast(res)
+        
+          if(objeto==null){
+            id=0;    
+        }else{
+            id= objeto.id
+        }
+        
+          var response = new leitura(res, id);  
+          
+        };
 
     // update one object 
     this.update = function (req, res) {

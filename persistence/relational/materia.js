@@ -36,7 +36,30 @@ function MateriaPersistence() {
             })
     }; // this.getById = function (id, res) {
 
-    
+        this.getLast = async function (db, res) {
+            
+            let objeto
+            // get id as parameter to passing into query and return filter data
+            await db.materia
+                .findOne({ 
+                    order: [ [ 'id', 'DESC' ]]
+                })
+                .then(object => {
+                    res.send(JSON.parse(JSON.stringify(object)));
+                    objeto= object;
+                    // if(object===null){
+                    //     id=0;
+                    // }else{
+                    //     id= object.id
+                    // }
+                    // var ultimo  = new getUltimo();
+                    // ultimo.setUltimo(res,id)
+                    // console.log("ESTÁ PASSANDO POR AQUI"+id)
+                })
+            return objeto;
+              
+        }; 
+
     this.add = function (db, object, res) {
         // get object as parameter to passing into query and return filter data
         db.materia
