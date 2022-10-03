@@ -13,7 +13,7 @@ var leitura = require('../api/leituraTramitar');
 function TramitarController() {
     var Persistence  = require('../persistence/tramitar.js');
     var persistence  = new Persistence();
-    
+ 
     // get all objects data 
     this.getAll = function (res) {
        
@@ -42,14 +42,15 @@ function TramitarController() {
     };
 
     // add one object
-    this.add = function (req, res) {
-        i=0
-        //while(i<10){
-            // console.log("CODIGO A SE GUIR ")
-            // console.log(i)
-        var response = new leitura(res);  
-     //   i++;
-       // }
+    this.add = async function (req, res) {
+        
+    
+    //  let objeto= await persistence.getLast(res)
+    //  console.log(objeto)
+    //  console.log(objeto.id+"aaaaaa id")
+      var response = new leitura(res);  
+      //  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+ultimo.getUltimo())
+   
     };
 
     // update one object 

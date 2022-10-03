@@ -10,7 +10,9 @@
 var Error = require('../../entity/error.js');
 
 
+
 function TramitarPersistence() {
+    
     // get all objects data 
     this.getAll = function (db, res) {
         // calling acquire methods and passing callback method that will be execute query
@@ -33,20 +35,35 @@ function TramitarPersistence() {
             })
             .then(object => {
                 res.send(JSON.parse(JSON.stringify(object)));
+                
+                this.id= object.id
+                //getUltimo(JSON.parse(JSON.stringify(object)))
             })
     }; // this.getById = function (id, res) {
     
     // get ultimo
-    this.getLast = function (db, res) {
+    this.getLast = async function (db, res) {
+        id=0;
+        let objeto
         // get id as parameter to passing into query and return filter data
-
-        db.tramitar
+        await db.tramitar
             .findOne({ 
                 order: [ [ 'id', 'DESC' ]]
             })
             .then(object => {
                 res.send(JSON.parse(JSON.stringify(object)));
+                objeto= object;
+                // if(object===null){
+                //     id=0;
+                // }else{
+                //     id= object.id
+                // }
+                // var ultimo  = new getUltimo();
+                // ultimo.setUltimo(res,id)
+                // console.log("ESTÁ PASSANDO POR AQUI"+id)
             })
+        return objeto;
+          
     }; // this.getById = function (id, res) {
 
     

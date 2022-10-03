@@ -54,11 +54,14 @@ var dataBase   = new DataBase();
         });
     };
 
-    this.getLast = function (res) {
-        dataBase.getDataBase(globals.dataBaseType)
+    this.getLast = async function (res) {
+       let objeto
+        await dataBase.getDataBase(globals.dataBaseType)
         .then((db) => {
-            persistence.getLast(db, res);
+            objeto= persistence.getLast(db, res);
+           
         });
+     return objeto;
     };
 
 
