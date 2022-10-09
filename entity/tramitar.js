@@ -7,7 +7,6 @@
 
 var Tramitar = function(params) {
     this.id                   = params.id;
-    this.materiaTramitando    = params.materiaTramitando;
 }
 
 module.exports = Tramitar;

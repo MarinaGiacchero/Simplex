@@ -1,6 +1,5 @@
-var Tramitar = function(id, materiaTramitando) {
+var Tramitar = function(id) {
     this.id         = id;
-    this.materiaTramitando       =  materiaTramitando;
 }
 
 module.exports = Tramitar;

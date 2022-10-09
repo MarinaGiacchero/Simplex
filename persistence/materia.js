@@ -1,6 +1,6 @@
 /**
  * @author: Helen de Freitas Santos
- * @author: Matheus Shinji Fukuyama
+ * @author: Marina Giacchero
  * @date: 07/02/2022
  * @desc: methods for fetching mysql data
 */

@@ -9,8 +9,7 @@
  module.exports = (sequelize, DataTypes) => {
     
     const tramitar = sequelize.pool.define('tramitar', {
-        materiaTramitando:  DataTypes.INTEGER,
-
+       
         created_at: {
           type: 'TIMESTAMP',
           defaultValue: sequelize.pool.literal('CURRENT_TIMESTAMP'),
