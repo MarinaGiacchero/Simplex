@@ -11,7 +11,7 @@
     
     const autor = sequelize.pool.define('autor', {
         nome:  DataTypes.STRING,
-
+        cargo:  DataTypes.STRING,
         created_at: {
           type: 'TIMESTAMP',
           defaultValue: sequelize.pool.literal('CURRENT_TIMESTAMP'),

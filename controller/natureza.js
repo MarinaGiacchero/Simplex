@@ -9,7 +9,6 @@
 var validator    = new (require('./validators/natureza.js'))()
 var Natureza   = require('../entity/natureza.js');
 const { default: axios } = require('axios');
-var leitura = require('../api/leitura.js');
 
 function NaturezaController() {
     var Persistence  = require('../persistence/natureza.js');
@@ -48,7 +47,6 @@ function NaturezaController() {
         //while(i<10){
             // console.log("CODIGO A SE GUIR ")
             // console.log(i)
-        var response = new leitura(res);  
      //   i++;
        // }
     };

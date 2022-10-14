@@ -33,13 +33,54 @@ function AutorPersistence() {
             })
             .then(object => {
                 res.send(JSON.parse(JSON.stringify(object)));
+                
             })
     }; // this.getById = function (id, res) {
 
-    
-    this.add = function (db, object, res) {
+       // get object by nome
+       this.getByName = async function (db, object, res) {
+        // get nome as parameter to passing into query and return filter data
+       // find=false
+       let objeto
+       await db.autor
+            .findAll({ 
+                where: {
+                    nome: object.nome,
+                    cargo: object.cargo
+                }
+            })
+            .then(object => {
+               objeto= object
+                // if(object!=null){
+                //     console.log('entrou')
+                //   res.send(JSON.parse(JSON.stringify(object)));
+                 
+                //     find=true
+                // }
+
+            })
+            return objeto;
+    };
+
+    this.getLast = async function (db, res) {
+            
+        let objeto
+        // get id as parameter to passing into query and return filter data
+        await db.autor
+            .findOne({ 
+                order: [ [ 'id', 'DESC' ]]
+            })
+            .then(object => {
+                res.send(JSON.parse(JSON.stringify(object)));
+                objeto= object;
+            })
+        return objeto;
+          
+    }; 
+
+    this.add = async function (db, object, res) {
         // get object as parameter to passing into query and return filter data
-        db.autor
+        await db.autor
             .create(object) 
             .then(function (addedRecord) {
                 var params = {

@@ -9,7 +9,6 @@
 var validator    = new (require('./validators/propoe.js'))()
 var Propoe   = require('../entity/propoe.js');
 const { default: axios } = require('axios');
-var leitura = require('../api/leitura.js');
 
 function PropoeController() {
     var Persistence  = require('../persistence/propoe.js');
@@ -48,7 +47,7 @@ function PropoeController() {
         //while(i<10){
             // console.log("CODIGO A SE GUIR ")
             // console.log(i)
-        var response = new leitura(res);  
+       // var response = new leitura(res);  
      //   i++;
        // }
     };

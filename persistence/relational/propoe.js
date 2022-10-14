@@ -36,6 +36,20 @@ function PropoePersistence() {
             })
     }; // this.getById = function (id, res) {
 
+        this.getLast = async function (db, res) {
+            
+            let objeto
+            // get id as parameter to passing into query and return filter data
+            await db.propoe
+                .findOne({ 
+                    order: [ [ 'id', 'DESC' ]]
+                })
+                .then(object => {
+                    objeto= object;
+                })
+            return objeto;
+              
+        }; 
     
     this.add = function (db, object, res) {
         // get object as parameter to passing into query and return filter data

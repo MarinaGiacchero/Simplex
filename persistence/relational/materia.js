@@ -60,9 +60,9 @@ function MateriaPersistence() {
               
         }; 
 
-    this.add = function (db, object, res) {
+    this.add = async function (db, object, res) {
         // get object as parameter to passing into query and return filter data
-        db.materia
+        await db.materia
             .create(object) 
             .then(function (addedRecord) {
                 var params = {

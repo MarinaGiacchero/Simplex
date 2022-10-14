@@ -5,11 +5,10 @@
  * @desc: custom route for fetching data
 */
 
-
 var validator    = new (require('./validators/autor.js'))()
 var Autor   = require('../entity/autor.js');
 const { default: axios } = require('axios');
-var leitura = require('../api/leitura.js');
+var leitura = require('../api/leituraAutorPropoe.js');
 
 function AutorController() {
     var Persistence  = require('../persistence/autor.js');
@@ -39,16 +38,25 @@ function AutorController() {
 
     // get object by name 
     this.getByName = function (req, res) {
-        persistence.getByName(req.params.name, res);
+        persistence.getByName(req.params.nome, res);
     };
 
     // add one object
-    this.add = function (req, res) {
-        i=0
+    this.add = async function (req, res) {
+        i = 2
+        id = 0
         //while(i<10){
             // console.log("CODIGO A SE GUIR ")
             // console.log(i)
-        var response = new leitura(res);  
+            
+        let objeto= await persistence.getLast(res)
+        if(objeto==null){
+            id = 1;
+        }else{
+            id = objeto.id+1
+        }
+        
+        var response = new leitura(res, i, id);  
      //   i++;
        // }
     };

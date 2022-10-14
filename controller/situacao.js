@@ -9,7 +9,6 @@
 var validator    = new (require('./validators/situacao.js'))()
 var Situacao   = require('../entity/situacao.js');
 const { default: axios } = require('axios');
-var leitura = require('../api/leitura.js');
 
 function SituacaoController() {
     var Persistence  = require('../persistence/situacao.js');
@@ -47,8 +46,7 @@ function SituacaoController() {
         i=0
         //while(i<10){
             // console.log("CODIGO A SE GUIR ")
-            // console.log(i)
-        var response = new leitura(res);  
+            // console.log(i) 
      //   i++;
        // }
     };

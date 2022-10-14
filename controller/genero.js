@@ -9,7 +9,7 @@
 var validator    = new (require('./validators/genero.js'))()
 var Genero   = require('../entity/genero.js');
 const { default: axios } = require('axios');
-var leitura = require('../api/leitura.js');
+var leitura = require('../api/leituraAutorPropoe.js');
 
 function GeneroController() {
     var Persistence  = require('../persistence/genero.js');

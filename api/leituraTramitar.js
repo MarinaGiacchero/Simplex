@@ -22,7 +22,7 @@ var tabelaTramitar=  function leituraTramitar(res){
     let url="https://legis.senado.leg.br/dadosabertos/materia/tramitando";   
     axios.get(url).then(async function (response) {
         console.log("i = "+i)
-       // if(response.data.ListaMateriasTramitando.Materias.Materia[teste].IdentificacaoMateria!=undefined){
+        if(response.data.ListaMateriasTramitando.Materias.Materia[teste]!=undefined){
              
         console.log(JSON.parse(JSON.stringify(response.data.ListaMateriasTramitando.Materias.Materia[teste].IdentificacaoMateria.CodigoMateria)))
          codigoMateria= JSON.parse(JSON.stringify(response.data.ListaMateriasTramitando.Materias.Materia[teste].IdentificacaoMateria.CodigoMateria));
@@ -42,9 +42,9 @@ var tabelaTramitar=  function leituraTramitar(res){
       await persistence.add(tramitar, res);
     
       teste++;
-    // }else{
-    //   i=fim
-    // }
+     }else{
+       i=fim
+     }
       //await console.log(JSON.stringify(persistence.getLast(res)))
         }).catch(function (error) {
             console.log(error);
