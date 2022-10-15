@@ -26,9 +26,8 @@ var tabelaMateria=  function leituraMateria(res, i){
                 var tramit= {
                     id : i
                  }
-                 console.log("ESTÁ TRAMITANDO: ID "+id+" AA E CONFERINDO "+ JSON.parse(JSON.stringify(situ.data.SituacaoAtualMateria.Materias.Materia[0].Tramitando)))
                  var tramitar = new Tramitar(tramit)
-                 await persistence.add(tramitar, res);   
+                 await persistenceTramitar.add(tramitar, res);   
               }
               
               console.log(i)
