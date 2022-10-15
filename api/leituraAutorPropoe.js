@@ -6,7 +6,6 @@ var PersistencePropoe = require('../persistence/propoe.js');
 var persistencePropoe = new PersistencePropoe();
 
 var feedback = function leitura(res, i, id){
-    console.log("aqui?")
     codigo= id;
     
     let url="https://legis.senado.leg.br/dadosabertos/materia/autoria/"+i+"?v=1";   
@@ -40,22 +39,26 @@ var feedback = function leitura(res, i, id){
                 idAutor : busca[0].id,
                 idMateria : i
               }
-              await persistencePropoe.add(propor,res)
+              let objPropoe= await persistencePropoe.getByName(propor,res)
+              if(objPropoe[0]==null){
+               await persistencePropoe.add(propor,res)
+              }
+              
            }
         
-      if(response.data.AutoriaMateria.Materia.Iniciativa!=undefined){
+   //    if(response.data.AutoriaMateria.Materia.Iniciativa!=undefined){
  
-       var lidoIniciativa = {
-        id : codigo+1,
-        nome : autor,
-        cargo : tipo,
-     }
-     resp= await persistence.getByName(lidoIniciativa.nome, lidoIniciativa.cargo, res)
-     if(lidoAutor.nome!=lidoIniciativa.nome || lidoAutor.cargo!=lidoIniciativa.cargo && !resp){
-        var inicia = new Autor(lidoIniciativa);
-        await persistence.add(inicia, res);
-    }
-      }
+   //     var lidoIniciativa = {
+   //      id : codigo+1,
+   //      nome : autor,
+   //      cargo : tipo,
+   //   }
+   //   resp= await persistence.getByName(lidoIniciativa, res)
+   //   if(lidoAutor.nome!=lidoIniciativa.nome || lidoAutor.cargo!=lidoIniciativa.cargo && resp[0]==null){
+   //      var inicia = new Autor(lidoIniciativa);
+   //      await persistence.add(inicia, res);
+   //  }
+    //  }
      }).catch(function (error) {
             console.log(error);
         });

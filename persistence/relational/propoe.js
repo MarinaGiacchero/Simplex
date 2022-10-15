@@ -36,6 +36,24 @@ function PropoePersistence() {
             })
     }; // this.getById = function (id, res) {
 
+        this.getByName = async function (db, object, res) {
+            // get nome as parameter to passing into query and return filter data
+           // find=false
+           let objeto
+           await db.propoe
+                .findAll({ 
+                    where: {
+                        idAutor: object.idAutor,
+                        idMateria: object.idMateria
+                    }
+                })
+                .then(object => {
+                   objeto= object
+   
+                })
+                return objeto;
+        };
+
         this.getLast = async function (db, res) {
             
             let objeto

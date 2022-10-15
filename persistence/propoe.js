@@ -61,6 +61,17 @@ var dataBase   = new DataBase();
         });
     };
 
+    this.getByName = async function (object, res) {
+        //find= false
+        let objeto
+        await dataBase.getDataBase(globals.dataBaseType)
+        .then((db) => {
+           objeto=persistence.getByName(db, object, res);
+          
+        });
+        return objeto;
+    };
+    
     this.getLast = async function (res) {
         let objeto
          await dataBase.getDataBase(globals.dataBaseType)
