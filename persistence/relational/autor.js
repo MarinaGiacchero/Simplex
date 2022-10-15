@@ -71,7 +71,6 @@ function AutorPersistence() {
                 order: [ [ 'id', 'DESC' ]]
             })
             .then(object => {
-                res.send(JSON.parse(JSON.stringify(object)));
                 objeto= object;
             })
         return objeto;

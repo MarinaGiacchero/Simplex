@@ -1,11 +1,14 @@
 const { default: axios } = require('axios');
+
 var Autor   = require('../entity/autor.js');
 var Persistence  = require('../persistence/autor.js');
 var persistence  = new Persistence();
+
 var PersistencePropoe = require('../persistence/propoe.js');
 var persistencePropoe = new PersistencePropoe();
 
 var feedback = function leitura(res, i, id){
+   
     codigo= id;
     
     let url="https://legis.senado.leg.br/dadosabertos/materia/autoria/"+i+"?v=1";   

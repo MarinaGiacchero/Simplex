@@ -16,7 +16,7 @@ function NaturezaPersistence() {
         // calling acquire methods and passing callback method that will be execute query
         // return response to server 
 
-        db.natureza
+        db.historico
             .findAll()
             .then(object => {
                 res.send(JSON.parse(JSON.stringify(object)));
@@ -27,7 +27,7 @@ function NaturezaPersistence() {
     this.getById = function (db, id, res) {
         // get id as parameter to passing into query and return filter data
 
-        db.natureza
+        db.historico
             .findAll({ 
                 where: {id: id}
             })
@@ -39,7 +39,7 @@ function NaturezaPersistence() {
     
     this.add = function (db, object, res) {
         // get object as parameter to passing into query and return filter data
-        db.natureza
+        db.historico
             .create(object) 
             .then(function (addedRecord) {
                 var params = {
@@ -54,7 +54,7 @@ function NaturezaPersistence() {
             .catch(function (err) {
                 var params = {
                     code:     500,
-                    message:  'Erro ao incluir natureza',
+                    message:  'Erro ao incluir historico',
                     response: err
                 };
 
@@ -63,10 +63,26 @@ function NaturezaPersistence() {
             });
     }; // this.add = function (object, res) {
 
-    
+        // get ultimo
+        this.getLast = async function (db, res) {
+            
+            let objeto
+            // get id as parameter to passing into query and return filter data
+            await db.historico
+                .findOne({ 
+                    order: [ [ 'id', 'DESC' ]]
+                })
+                .then(object => {
+                    objeto= object;
+
+                })
+            return objeto;
+              
+        }; 
+
     this.update = function (db, object, res) {
         // get object as parameter to passing into query and return filter data
-        db.natureza
+        db.historico
             .update(object,
                 {where: {
                     id: object.id
@@ -84,7 +100,7 @@ function NaturezaPersistence() {
             .catch(function (err) {
                 var params = {
                     code:     500,
-                    message:  'Erro ao alterar natureza',
+                    message:  'Erro ao alterar historico',
                     response: err
                 };
 
@@ -95,7 +111,7 @@ function NaturezaPersistence() {
     
 
     this.deleteById = function (db, id, res) {
-        db.natureza
+        db.historico
             .destroy({
                 where: {
                     id: id

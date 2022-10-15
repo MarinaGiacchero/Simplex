@@ -53,18 +53,11 @@ function TramitarPersistence() {
             .then(object => {
                 res.send(JSON.parse(JSON.stringify(object)));
                 objeto= object;
-                // if(object===null){
-                //     id=0;
-                // }else{
-                //     id= object.id
-                // }
-                // var ultimo  = new getUltimo();
-                // ultimo.setUltimo(res,id)
-                // console.log("ESTÁ PASSANDO POR AQUI"+id)
+ 
             })
         return objeto;
           
-    }; // this.getById = function (id, res) {
+    }; 
 
     
     this.add = function (db, object, res) {
