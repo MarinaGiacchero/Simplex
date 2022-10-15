@@ -2,7 +2,9 @@ const { default: axios } = require('axios');
 var Materia   = require('../entity/materia.js');
 var Persistence  = require('../persistence/materia.js');
 var persistence  = new Persistence();
-
+var Persistence  = require('../persistence/tramitar.js');
+var Tramitar   = require('../entity/tramitar.js');
+var persistenceTramitar  = new Persistence();
 var tabelaMateria=  function leituraMateria(res, i){
     
     // rodar=0
@@ -19,6 +21,15 @@ var tabelaMateria=  function leituraMateria(res, i){
           
           await axios.get(urlSituacao).then(async function (situ) {
               idSituacao= JSON.parse(JSON.stringify(situ.data.SituacaoAtualMateria.Materias.Materia[0].SituacaoAtual.Autuacoes.Autuacao[0].Situacoes.Situacao[0].CodigoSituacao));
+              if(JSON.parse(JSON.stringify(situ.data.SituacaoAtualMateria.Materias.Materia[0].Tramitando))=='Sim'){
+            
+                var tramit= {
+                    id : i
+                 }
+                 var tramitar = new Tramitar(tramit)
+                 await persistenceTramitar.add(tramitar, res);   
+              }
+              
               console.log(i)
               id= JSON.parse(JSON.stringify(response.data.DetalheMateria.Materia.IdentificacaoMateria.CodigoMateria));
               sigla= JSON.parse(JSON.stringify(response.data.DetalheMateria.Materia.IdentificacaoMateria.SiglaCasaIdentificacaoMateria));
@@ -39,8 +50,10 @@ var tabelaMateria=  function leituraMateria(res, i){
                 idNatureza : idNatureza,
                 idSituacao : idSituacao
              }
+
              console.log(lidoMateria)
              var materia = new Materia(lidoMateria);
+             
              await persistence.add(materia, res);   
              }).catch(function (error) {
              console.log(error);

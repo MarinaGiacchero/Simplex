@@ -45,20 +45,20 @@ function MateriaController() {
     // add one object
     this.add = async function (req, res) {
             materias= 0;
-            id=0
-           let objeto= await persistence.getLast(res)
+            id=236
+        //    let objeto= await persistence.getLast(res)
         
-           if(objeto==null){
-             id=1;    
-         }else{
-             id= objeto.id
-         }
-         while(materias<1000){
+        //    if(objeto==null){
+        //      id=1;    
+        //  }else{
+        //      id= objeto.id
+        //  }
+     //    while(materias<1000){
           var response = new leitura(res, id); 
           id++ 
           console.log("MENOR: "+id+ " MATERIA: "+materias)
           materias++
-         }
+      //   }
         };
 
     // update one object 
