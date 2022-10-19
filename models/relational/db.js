@@ -32,23 +32,7 @@ db.materia = require('./materia.js')(db.mysql,       db.Sequelize);
 db.historico = require('./historico.js')(db.mysql,       db.Sequelize);
 db.autor = require('./autor.js')(db.mysql,       db.Sequelize);
 db.propoe = require('./propoe.js')(db.mysql,       db.Sequelize);
-// db.idioma = require('./idioma.js')(db.mysql,       db.Sequelize);
-// db.caracterEspecial = require('./caracterEspecial.js')(db.mysql,       db.Sequelize);
-// db.simbolo = require('./simbolo.js')(db.mysql,       db.Sequelize);
-//db.stopword = require('./stopword.js')(db.mysql,       db.Sequelize);
-//db.configuracao = require('./configuracao.js')(db.mysql,       db.Sequelize);
-// db.reducaoLexical = require('./reducaoLexical.js')(db.mysql,       db.Sequelize);
-// db.acentuacao = require('./acentuacao.js')(db.mysql,       db.Sequelize);
-// db.pergunta = require('./pergunta.js')(db.mysql,       db.Sequelize);
-// db.contexto = require('./contexto.js')(db.mysql,       db.Sequelize);
-// db.perguntaContexto = require('./perguntaContexto.js')(db.mysql,       db.Sequelize);
-// db.respostaContexto = require('./respostaContexto.js')(db.mysql,       db.Sequelize);
-// db.perguntaMap = require('./perguntaMap.js')(db.mysql,       db.Sequelize);
-// db.comunicacao = require('./comunicacao.js')(db.mysql,       db.Sequelize);
-// db.dialogo = require('./dialogo.js')(db.mysql,       db.Sequelize);
-// db.dialogoMap = require('./dialogoMap.js')(db.mysql,       db.Sequelize);
-// db.estrategia = require('./estrategia.js')(db.mysql,       db.Sequelize);
-// db.pessoa = require('./pessoa.js')(db.mysql,       db.Sequelize);
+
 db.mysql.pool.sync({alter:true});
 
 module.exports = db; 

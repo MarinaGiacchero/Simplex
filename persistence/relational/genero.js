@@ -40,26 +40,26 @@ function GeneroPersistence() {
     this.add = function (db, object, res) {
         // get object as parameter to passing into query and return filter data
         db.genero
-            .create(object) 
-            .then(function (addedRecord) {
-                var params = {
-                    code:     200,
-                    message:  'OK',
-                    response: 'Record is successfully added.'
-                };
+       .create(object) 
+        .then(function (addedRecord) {
+            console.log("ta chegando aqui")
+            var params = {
+                code:     200,
+                message:  'OK',
+                response: 'Record is successfully added.'
+            };
 
-                 var error = new Error(params);
-                 res.json({error});
-            })
-            .catch(function (err) {
-                var params = {
-                    code:     500,
-                    message:  'Erro ao incluir genero',
-                    response: err
-                };
-
-                // var error = new Error(params);
-                // res.json({error});
+                var error = new Error(params);
+                res.json({error});
+        })
+        .catch(function (err) {
+            var params = {
+                code:     500,
+                message:  'Erro ao incluir a materia',
+                response: err
+            };
+            // var error = new Error(params);
+            // res.json({error});
             });
     }; // this.add = function (object, res) {
 

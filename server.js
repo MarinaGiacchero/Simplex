@@ -12,7 +12,7 @@ const passport       = require('passport')
 const swaggerUi      = require('swagger-ui-express')
 const swaggerDocs    = require('./swagger.json')
 
-var routePersonagem             = require('./routes/personagem');
+
 var routeGenero                 = require('./routes/genero');
 //Tabela matéria
 var routeMateria                = require('./routes/materia');
@@ -28,26 +28,7 @@ var routeHistorico              = require('./routes/historico');
 var routePropoe                 = require('./routes/propoe');
 //Tabela autor
 var routeAutor                  = require('./routes/autor');
-var routeIdioma                 = require('./routes/idioma');
-var routeCaracterEspecial       = require('./routes/caracterEspecial');
-var routeSimbolo                = require('./routes/simbolo');
-var routeStopword               = require('./routes/stopword');
-var routeConfiguracao           = require('./routes/configuracao');
-var routeReducaoLexical         = require('./routes/reducaoLexical');
-var routeAcentuacao             = require('./routes/acentuacao');
-var routePreProcessamento       = require('./routes/preProcessamento');
-var routePergunta               = require('./routes/pergunta');
-var routeContexto               = require('./routes/contexto');
-var routeRespostaContexto       = require('./routes/respostaContexto');
-var routePerguntaMap            = require('./routes/perguntaMap');
-var routePessoa                 = require('./routes/pessoa');
-var routeLocalizaPergunta       = require('./routes/localizaPergunta');
-var routeComunicacao            = require('./routes/comunicacao');
-var routeDialogo                = require('./routes/dialogo');
-var routeDialogoMap             = require('./routes/dialogoMap');
-var routeEstrategia             = require('./routes/estrategia');
-var routePerguntaContexto       = require('./routes/perguntaContexto');
-var routeAutenticacaoUsuario    = require('./routes/autenticacaoUsuario');
+
 const { Passport } = require('passport');
 
 
@@ -73,7 +54,7 @@ app.use(bodyparser.urlencoded({ extended : true}));
 
 //app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
-// routePersonagem.configure(app);
+
  routeGenero.configure(app);
  routeTramitar.configure(app);
  routeMateria.configure(app);
@@ -82,26 +63,7 @@ app.use(bodyparser.urlencoded({ extended : true}));
  routeHistorico.configure(app);
  routePropoe.configure(app);
  routeAutor.configure(app);
- // routeIdioma.configure(app);
-// routeCaracterEspecial.configure(app);
-// routeSimbolo.configure(app);
-// routeStopword.configure(app);
-// routeConfiguracao.configure(app);
-// routeReducaoLexical.configure(app);
-// routeAcentuacao.configure(app);
-// routePreProcessamento.configure(app);
-// routePergunta.configure(app);
-// routeContexto.configure(app);
-// routeRespostaContexto.configure(app);
-// routePerguntaMap.configure(app);
-// routePessoa.configure(app);
-// routeLocalizaPergunta.configure(app);
-// routeComunicacao.configure(app);
-// routeDialogo.configure(app);
-// routeDialogoMap.configure(app);
-// routeEstrategia.configure(app);
-// routePerguntaContexto.configure(app);
-// routeAutenticacaoUsuario.configure(app);
+
 
 // require('./api/autenticacao/passport')(passport)
 
