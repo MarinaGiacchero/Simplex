@@ -6,7 +6,9 @@
 */
 //methods for fetching mysql data
 
-
+const { Op } = require("sequelize");
+const { where } = require('sequelize');
+const sequelize = require('sequelize');
 var Error = require('../../entity/error.js');
 
 
@@ -22,6 +24,29 @@ function MateriaPersistence() {
                 res.send(JSON.parse(JSON.stringify(object)));
             });
     }; // this.getAll = function (res) {
+
+        this.getMateriaAno = function (db, res) {
+    
+            db.materia
+                .findAll({
+                    attributes:[
+                        'anoCriacao',
+                        [sequelize.fn('COUNT', sequelize.col('anoCriacao')), 'qtde']
+                    ],
+                    group: 
+                        'anoCriacao',
+                    where: {
+                        anoCriacao: {
+                        [Op.is]: [true]
+                        }
+                    }, 
+                    order: [ [ 'anoCriacao', 'DESC' ]]
+                    
+                })
+                .then(object => {
+                    res.send(JSON.parse(JSON.stringify(object)));
+                });
+        };
 
     // get object by id
     this.getById = function (db, id, res) {

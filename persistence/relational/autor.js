@@ -8,7 +8,7 @@
 
 
 var Error = require('../../entity/error.js');
-
+const sequelize = require('sequelize');
 
 function AutorPersistence() {
     // get all objects data 
@@ -22,6 +22,40 @@ function AutorPersistence() {
                 res.send(JSON.parse(JSON.stringify(object)));
             });
     }; // this.getAll = function (res) {
+        
+    this.getAutorMateria = function (db, res) {
+            // calling acquire methods and passing callback method that will be execute query
+            // return response to server 
+    
+            db.autor
+                .findAll({
+                    
+                    attributes: {
+                            
+                        include: [
+                            [
+                                // Note the wrapping parentheses in the call below!
+                                sequelize.literal(`(
+                                    SELECT COUNT(*)
+                                    FROM materia, propoe
+                                    WHERE
+                                        autor.id         = propoe.idAutor
+                                    AND
+                                        propoe.idMateria = materia.id
+
+                                )`),
+                                'qtde'
+                            ]
+                        ],
+                        exclude: ['id', 'cargo', 'updated_at', 'created_at'],
+                        group: 'nome'
+
+                    },
+                })
+                .then(object => {
+                    res.send(JSON.parse(JSON.stringify(object)));
+                });
+        };
 
     // get object by id
     this.getById = function (db, id, res) {

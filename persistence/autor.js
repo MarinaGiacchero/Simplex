@@ -46,6 +46,13 @@ var dataBase   = new DataBase();
         });
     };
 
+    this.getAutorMateria = function (res) {
+        dataBase.getDataBase(globals.dataBaseType)
+        .then((db) => {
+            persistence.getAutorMateria(db, res);
+        });
+    };
+
     this.getByName = async function (object, res) {
         //find= false
         let objeto

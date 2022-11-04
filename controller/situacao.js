@@ -30,7 +30,10 @@ function SituacaoController() {
              });
         persistence.getAll(res);
     };
+    this.getSituacaoMateria = function (res) {
 
+    persistence.getSituacaoMateria(res);
+};
     // get object by id 
     this.getById = function (req, res) {
         persistence.getById(req.params.id, res);

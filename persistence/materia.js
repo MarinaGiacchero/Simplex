@@ -45,6 +45,13 @@ var dataBase   = new DataBase();
             persistence.getAll(db, res);
         });
     };
+
+    this.getMateriaAno = function (res) {
+        dataBase.getDataBase(globals.dataBaseType)
+        .then((db) => {
+            persistence.getMateriaAno(db, res);
+        });
+    };
     
     this.getLast = async function (res) {
         let objeto

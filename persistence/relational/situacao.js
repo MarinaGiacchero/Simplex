@@ -8,7 +8,9 @@
 
 
 var Error = require('../../entity/error.js');
-
+const sequelize = require('sequelize');
+const { literal } = require('sequelize');
+const materia = require('../../models/relational/db');
 
 function SituacaoPersistence() {
     // get all objects data 
@@ -22,6 +24,39 @@ function SituacaoPersistence() {
                 res.send(JSON.parse(JSON.stringify(object)));
             });
     }; // this.getAll = function (res) {
+
+        this.getSituacaoMateria = function (db, res) {
+            // calling acquire methods and passing callback method that will be execute query
+            // return response to server 
+            db.situacao
+                .findAll({
+
+                        attributes: {
+                            
+                            include: [
+                                [
+                                    // Note the wrapping parentheses in the call below!
+                                    sequelize.literal(`(
+                                        SELECT COUNT(*)
+                                        FROM materia 
+                                        WHERE
+                                            materia.idSituacao = situacao.id
+
+                                    )`),
+                                    'qtde'
+                                ]
+                            ],
+                            exclude: ['id'],
+                            group: 'descricao',
+                            order: [ [ 'descricao', 'DESC' ]]
+
+                        },
+
+                })
+                .then(object => {
+                    res.send(JSON.parse(JSON.stringify(object)));
+                });
+        };
 
     // get object by id
     this.getById = function (db, id, res) {

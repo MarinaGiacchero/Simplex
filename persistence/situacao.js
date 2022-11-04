@@ -46,6 +46,12 @@ var dataBase   = new DataBase();
         });
     };
 
+    this.getSituacaoMateria = function (res) {
+        dataBase.getDataBase(globals.dataBaseType)
+        .then((db) => {
+            persistence.getSituacaoMateria(db, res);
+        });
+    };
     // get object by id
     this.getById = function (id, res) {
         dataBase.getDataBase(globals.dataBaseType)

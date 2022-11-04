@@ -32,6 +32,10 @@ function MateriaController() {
         persistence.getAll(res);
     };
 
+    this.getMateriaAno = function (res) {
+    persistence.getMateriaAno(res);
+};
+
     // get object by id 
     this.getById = function (req, res) {
         persistence.getById(req.params.id, res);
@@ -46,6 +50,7 @@ function MateriaController() {
     this.add = async function (req, res) {
             materias= 0;
             id=92810
+            
             let objeto= await persistence.getLast(res)
         
             if(objeto==null){
@@ -53,12 +58,12 @@ function MateriaController() {
           }else{
               id= objeto.id+1
           }
-     //    while(materias<1000){
-          var response = new leitura(res, id); 
+         while(materias<3){
+          var response = new leitura(res, id, materias); 
           id++ 
           console.log("MENOR: "+id+ " MATERIA: "+materias)
           materias++
-      //   }
+         }
         };
 
     // update one object 

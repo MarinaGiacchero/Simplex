@@ -20,6 +20,11 @@ module.exports = {
             controller.getAll(res, req);
         });
 
+        app.get('/rest/materias/ano', function (req, res) {
+            //     const index = req.rawHeaders.indexOf('Authorization')
+                 controller.getMateriaAno(res, req);
+             });
+
         // here we gets id from request and passing to it object method.
         app.get('/rest/materia/:id/', function (req, res) {
             controller.getById(res, req);

@@ -30,7 +30,10 @@ function AutorController() {
              });
         persistence.getAll(res);
     };
-
+    
+    this.getAutorMateria = function (res) {
+        persistence.getAutorMateria(res);
+    };
     // get object by id 
     this.getById = function (req, res) {
         persistence.getById(req.params.id, res);
