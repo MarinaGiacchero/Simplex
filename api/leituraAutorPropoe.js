@@ -21,6 +21,7 @@ var feedback = function leitura(res, i, id){
             nome : autor,
             cargo : tipo,
          }
+      
          busca= await persistence.getByName(lidoAutor, res)
          buscaPropor = await persistencePropoe.getLast(res)
          idPropor=0;

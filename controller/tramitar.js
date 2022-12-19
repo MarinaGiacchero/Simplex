@@ -9,6 +9,7 @@ var validator    = new (require('./validators/tramitar.js'))()
 var Tramitar   = require('../entity/tramitar.js');
 const { default: axios } = require('axios');
 var leitura = require('../api/leituraTramitar');
+var atualizar = require('../api/atualizarNovos');
 
 function TramitarController() {
     var Persistence  = require('../persistence/tramitar.js');
@@ -16,18 +17,6 @@ function TramitarController() {
  
     // get all objects data 
     this.getAll = function (res) {
-       
-            i=236;
-            let url="https://legis.senado.leg.br/dadosabertos/materia/situacaoatual/"+i+"?v=3";
-    
-             axios.get(url).then(function (response) {
-    
-                codigo= JSON.parse(JSON.stringify(response.data.SituacaoAtualMateria.Materias.Materia[0].Codigo));
-                 console.log(codigo);
-                 console.log(";AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-             }).catch(function (error) {
-                 console.log(error);
-             });
         persistence.getAll(res);
     };
 
@@ -43,28 +32,25 @@ function TramitarController() {
 
     // add one object
     this.add = async function (req, res) {
-        
-    
-    //  let objeto= await persistence.getLast(res)
-    //  console.log(objeto)
-    //  console.log(objeto.id+"aaaaaa id")
-      var response = new leitura(res);  
-      //  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+ultimo.getUltimo())
-   
+      var response = new leitura(res);    
     };
 
     // update one object 
     this.update = function (req, res) {
+       
+      //  var response = new leitura(res);
+        var atualiza = new atualizar();
+        atualiza.atualizaTramitar(res);
         // Usando o exemplo do Leonardo
       
-                var tramitarParams = {
-                    id:       req.body.id,
-                    nome:     req.body.nome
-                }
+                // var tramitarParams = {
+                //     id:       req.body.id,
+                //     nome:     req.body.nome
+                // }
                 
-                var tramitacao = new Tramitar(tramitarParams);
+                // var tramitacao = new Tramitar(tramitarParams);
 
-                persistence.update(tramitacao, res);
+                // persistence.update(tramitacao, res);
         
     };
 

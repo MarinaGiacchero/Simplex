@@ -49,16 +49,17 @@ function MateriaPersistence() {
         };
 
     // get object by id
-    this.getById = function (db, id, res) {
+    this.getById = async function (db, id, res) {
         // get id as parameter to passing into query and return filter data
-
-        db.materia
+        let objeto
+        await db.materia
             .findAll({ 
                 where: {id: id}
             })
             .then(object => {
-                res.send(JSON.parse(JSON.stringify(object)));
+                objeto= object;
             })
+            return objeto;
     }; // this.getById = function (id, res) {
 
         this.getLast = async function (db, res) {
@@ -112,35 +113,46 @@ function MateriaPersistence() {
     }; // this.add = function (object, res) {
 
     
-    this.update = function (db, object, res) {
-        // get object as parameter to passing into query and return filter data
-        db.materia
-            .update(object,
-                {where: {
-                    id: object.id
-                }})
-            .then(function (updatedRecord) {
-                var params = {
-                    code:     200,
-                    message:  'OK',
-                    response: 'Record is successfully updated.'
-                };
+    // this.update = async function (db, object, res) {
+    //     // get object as parameter to passing into query and return filter data
+    //    await db.materia
+    //         .update(object,
+    //             {where: {
+    //                 id: object.id
+    //             }})
+    //         .then(function (updatedRecord) {
+    //             var params = {
+    //                 code:     200,
+    //                 message:  'OK',
+    //                 response: 'Record is successfully updated.'
+    //             };
 
-                var error = new Error(params);
-                res.json({error});
-            })
-            .catch(function (err) {
-                var params = {
-                    code:     500,
-                    message:  'Erro ao alterar materia',
-                    response: err
-                };
+    //             var error = new Error(params);
+    //             res.json({error});
+    //         })
+    //         .catch(function (err) {
+    //             var params = {
+    //                 code:     500,
+    //                 message:  'Erro ao alterar materia',
+    //                 response: err
+    //             };
 
-                var error = new Error(params);
-                res.json({error});
-            });
-    }; // this.update = function (object, res) {
+    //             var error = new Error(params);
+    //             res.json({error});
+    //         });
+    // }; // this.update = function (object, res) {
     
+        this.update = async function (db, id, idSituacao, res) {
+            // get object as parameter to passing into query and return filter data
+        await db.materia
+            .update({idSituacao: idSituacao},
+                         {where: {
+                            id: id
+                         }})
+            .then(object => {
+                console.log("upgrade "+object)
+            })
+        }; 
 
     this.deleteById = function (db, id, res) {
         db.materia

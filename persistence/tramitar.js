@@ -64,6 +64,15 @@ var dataBase   = new DataBase();
      return objeto;
     };
 
+    this.getAtt = async function (offset, res) {
+        let objeto
+         await dataBase.getDataBase(globals.dataBaseType)
+         .then((db) => {
+             objeto= persistence.getAtt(db, offset, res);
+            
+         });
+      return objeto;
+     };
 
     this.add = async function (object, res) {
        await dataBase.getDataBase(globals.dataBaseType)
@@ -81,8 +90,8 @@ var dataBase   = new DataBase();
     };
 
 
-    this.deleteById = function (id, res) {
-        dataBase.getDataBase(globals.dataBaseType)
+    this.deleteById = async function (id, res) {
+        await dataBase.getDataBase(globals.dataBaseType)
         .then((db) => {    
             persistence.deleteById(db, id, res);
         });

@@ -59,6 +59,22 @@ function TramitarPersistence() {
           
     }; 
 
+    this.getAtt = async function (db, offset, res) {
+        id=0;
+        let objeto
+        // get id as parameter to passing into query and return filter data
+        await db.tramitar
+            .findOne({ 
+                order: [ [ 'id', 'ASC' ]], 
+                offset: offset
+            })
+            .then(object => {
+                objeto= object;
+ 
+            })
+        return objeto;
+          
+    }; 
     
     this.add = function (db, object, res) {
         // get object as parameter to passing into query and return filter data
@@ -117,8 +133,8 @@ function TramitarPersistence() {
     }; // this.update = function (object, res) {
     
 
-    this.deleteById = function (db, id, res) {
-        db.tramitar
+    this.deleteById = async function (db, id, res) {
+        await db.tramitar
             .destroy({
                 where: {
                     id: id
@@ -144,14 +160,8 @@ function TramitarPersistence() {
                 res.json({error});
             })
             .catch(function (err) {
-                var params = {
-                    code:     500,
-                    message:  'Erro ao excluir',
-                    response: err
-                };
 
-                var error = new Error(params);
-                res.json({error});
+
             });
 
     }; // this.deleteById = function (id, res) {

@@ -41,16 +41,17 @@ function SituacaoPersistence() {
                                         FROM materia 
                                         WHERE
                                             materia.idSituacao = situacao.id
-
+                                            HAVING Count(*) > 4000
                                     )`),
                                     'qtde'
                                 ]
                             ],
                             exclude: ['id'],
-                            group: 'descricao',
-                            order: [ [ 'descricao', 'DESC' ]]
-
                         },
+                            group: 'descricao',
+                            order: [ [ 'descricao', 'DESC' ]],             
+                         
+                        
 
                 })
                 .then(object => {

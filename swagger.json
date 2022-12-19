@@ -1,51 +1,41 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Audire API",
-        "description": "Essa api tem como objetivo criar e integrar um assistente virtual a sua aplicação",
+        "title": "Simplex API",
+        "description": "Essa api tem como objetivo oferecer informações das medidas provisórias com visualização de dados paraa sua aplicação",
         "contact": {
-            "email": "fukuyama.shinji@aluno.ifsp.edu.br"
+            "email": "m.giacchero@aluno.ifsp.edu.br"
         },
         "version": "1.0.0"
     },
     "servers": [
         {
             "url": "http://localhost:8000/",
-            "description": "API de produção"
+            "description": "API"
         }
     ],
     "paths": {
-        "/rest/pessoa": {
-            "post": {
-                "summary": "Cadastro de Pessoa",
-                "description": "Esta rota é responsável por cadastrar um novo usuário no sistema",
-                "tags": ["Usuario"],
+        "/rest/materias/ano": {
+            "get": {
+                "summary": "Pegar materias por ano",
+                "description": "Esta rota é responsável por pegar as medidas provisórias do sistema por ano",
+                "tags": ["Materia por Ano"],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/Pessoa"
+                                "$ref": "#/components/schemas/Materia"
                             },
                             "examples": {
-                                "Pessoa": {
+                                "MateriaAno 1": {
                                     "value": {
-                                        "primeiroNome": "Fulano",
-                                        "ultimoNome": "Siclano",
-                                        "email": "fulano.siclano@gmail.com",
-                                        "senha": "123456",
-                                        "generoId": 1
+                                        "anoCriacao": "2022",
+                                        "qtde": "1623"
                                     }
                                 }
                             }
                         }
                     },
-                    "responses": {
-                        "401": {
-                            "description": "Unauthorized"
-                        },
-                        "400": {
-                            "description": "Email já cadastrado"
-                        },
                         "200": {
                             "description": "OK",
                             "content": {
@@ -53,7 +43,7 @@
                                     "schema": {
                                         "type": "object",
                                         "items": {
-                                            "$ref": "#/components/schemas/Pessoa"
+                                            "$ref": "#/components/schemas/Materia"
                                         }
                                     }
                                 }
@@ -64,34 +54,20 @@
                    
                 }
             },
-            "put": {
-                "summary": "Alteração de Pessoa",
-                "description": "Esta rota é responsável por alterar os dados de usuário no sistema",
-                "tags": ["Usuario"],
+
+        "/rest/atualizar/tramitar": {
+            "get": {
+                "summary": "Atualizar as matérias que mudaram",
+                "description": "Esta rota é responsável atualizar as medidas provisórias que tiveram alterações",
+                "tags": ["Atualizar matérias em tramitação"],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/Pessoa"
-                            },
-                            "examples": {
-                                "Pessoa": {
-                                    "value": {
-                                        "id": 1,
-                                        "primeiroNome": "Fulano",
-                                        "ultimoNome": "Siclano",
-                                        "email": "fulano.siclano@gmail.com",
-                                        "senha": "123456",
-                                        "generoId": 1
-                                    }
-                                }
+                                "$ref": "#/components/schemas/Materia"
                             }
                         }
                     },
-                    "responses": {
-                        "401": {
-                            "description": "Unauthorized"
-                        },
                         "200": {
                             "description": "OK",
                             "content": {
@@ -99,7 +75,7 @@
                                     "schema": {
                                         "type": "object",
                                         "items": {
-                                            "$ref": "#/components/schemas/Pessoa"
+                                            "$ref": "#/components/schemas/Materia"
                                         }
                                     }
                                 }
@@ -107,32 +83,191 @@
                             }
                         }
                     }
+                   
+                }
+            },
+        "/rest/autor/materia": {
+            "get": {
+                "summary": "Quantidade de matéria por autor",
+                "description": "Esta rota é responsável visualizar a quantidade de matérias por autores que fizeram mais de 250 medidas provisórias",
+                "tags": ["Visualizar quantidade de matérias por Autor"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MateriaAutor"
+                            },
+                            "examples": {
+                                "MateriaAutor 1": {
+                                    "value": {
+                                        "autor": "Presidência da República",
+                                        "qtde": "245"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                        "200": {
+                            "description": "OK",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "items": {
+                                            "$ref": "#/components/schemas/MateriaAutor"
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                   
+                }
+            },
+        "/rest/situacoes/materias": {
+            "get": {
+                "summary": "Quantidade de matéria por situação",
+                "description": "Esta rota é responsável visualizar a situação da maioria das medidas provisórias",
+                "tags": ["Visualizar Situação da maioria das matérias"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MateriaSituacao"
+                            },
+                            "examples": {
+                                "MateriaSituacao 1": {
+                                    "value": {
+                                        "situacao": "Aprovada",
+                                        "qtde": "2450"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                        "200": {
+                            "description": "OK",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "items": {
+                                            "$ref": "#/components/schemas/MateriaSituacao"
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                   
+                }
+            },
+        "/rest/materia": {
+            "post": {
+                "summary": "Colocar materias automaticamente",
+                "description": "Esta rota é responsável por colocar as medidas provisórias no sistema",
+                "tags": ["Materia"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Materia"
+                            },
+                            "examples": {
+                                "Materia 1": {
+                                    "value": {
+                                        "id": 1,
+                                        "ementa": "DISPÕE SOBRE A REALIZAÇÃO DE PLEBISCITO PARA A CRIAÇÃO DO ESTADO DO TAPAJOS.",
+                                        "sigla": "CN",
+                                        "anoCriacao": "1990",
+                                        "anoApresentacao": "1990-06-26 00:00:00",
+                                        "idNatureza": 1, 
+                                        "idSituacao": 1
+                                    }
+                                }
+                            }
+                        }
+                    },
+                        "200": {
+                            "description": "OK",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Materia"
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                   
+                }
             }
-        }
+
     },
     "components": {
         "schemas": {
-            "Pessoa": {
+            "Materia": {
                 "type": "object",
                 "properties": {
-                    "primeiroNome": {
+                    "ementa": {
                         "type": "string"
                     },
-                    "ultimoNome": {
+                    "sigla": {
                         "type": "string"
                     },
-                    "email": {
+                    "anoCriacao": {
                         "type": "string"
                     },
-                    "senha": {
+                    "anoApresentacao": {
                         "type": "string"
                     },
-                    "generoId": {
+                    "idNatureza": {
+                        "type": "integer"
+                    },
+                    "idSituacao": {
+                        "type": "integer"
+                    }
+                }
+            }, 
+            "MateriaAno": {
+                "type": "object",
+                "properties": {
+                    "anoCriacao": {
+                        "type": "string"
+                    },
+                    "qtde": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "MateriaAutor": {
+                "type": "object",
+                "properties": {
+                    "autor": {
+                        "type": "string"
+                    },
+                    "qtde": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "MateriaSituacao": {
+                "type": "object",
+                "properties": {
+                    "situacao": {
+                        "type": "string"
+                    },
+                    "qtde": {
                         "type": "integer"
                     }
                 }
             }
         }
     }
-}
 }

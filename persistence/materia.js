@@ -63,12 +63,15 @@ var dataBase   = new DataBase();
       return objeto;
      };
 
+
     // get object by id
-    this.getById = function (id, res) {
-        dataBase.getDataBase(globals.dataBaseType)
+    this.getById = async function (id, res) {
+        let objeto
+        await dataBase.getDataBase(globals.dataBaseType)
         .then((db) => {
-            persistence.getById(db, id, res);
+            objeto = persistence.getById(db, id, res);
         });
+        return objeto;
     };
 
     this.add = async function (object, res) {
@@ -78,11 +81,10 @@ var dataBase   = new DataBase();
         });
     };
 
-
-    this.update = function (object, res) {
-        dataBase.getDataBase(globals.dataBaseType)
+    this.update = async function (id, idSituacao, res) {
+        await dataBase.getDataBase(globals.dataBaseType)
         .then((db) => {    
-            persistence.update(db, object, res);
+            persistence.update(db, id, idSituacao, res);
         });
     };
 

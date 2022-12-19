@@ -32,8 +32,8 @@ var tabelaTramitar=  function leituraTramitar(res){
         //     parar=1;s
 
         // }
-        
-        
+  
+      
       lidoTramitar.id = codigoMateria;
      
       var tramitar = new Tramitar(lidoTramitar);

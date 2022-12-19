@@ -17,18 +17,7 @@ function MateriaController() {
     
     // get all objects data 
     this.getAll = function (res) {
-       
-            i=236;
-            let url="https://legis.senado.leg.br/dadosabertos/materia/situacaoatual/"+i+"?v=3";
-    
-             axios.get(url).then(function (response) {
-    
-                codigo= JSON.parse(JSON.stringify(response.data.SituacaoAtualMateria.Materias.Materia[0].Codigo));
-                 console.log(codigo);
-                 console.log(";AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-             }).catch(function (error) {
-                 console.log(error);
-             });
+
         persistence.getAll(res);
     };
 
@@ -49,7 +38,6 @@ function MateriaController() {
     // add one object
     this.add = async function (req, res) {
             materias= 0;
-            id=92810
             
             let objeto= await persistence.getLast(res)
         
@@ -58,12 +46,17 @@ function MateriaController() {
           }else{
               id= objeto.id+1
           }
-         while(materias<3){
-          var response = new leitura(res, id, materias); 
+         while(materias<1){
+          var response = new leitura(res, id, 0); 
+
           id++ 
           console.log("MENOR: "+id+ " MATERIA: "+materias)
           materias++
-         }
+         
+          if(response == 0){
+            return 1;
+          }
+        }
         };
 
     // update one object 

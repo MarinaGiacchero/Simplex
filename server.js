@@ -8,12 +8,10 @@
 var express          = require('express');
 var bodyparser       = require('body-parser');
 var validator        = require("express-validator");
-const passport       = require('passport')
 const swaggerUi      = require('swagger-ui-express')
 const swaggerDocs    = require('./swagger.json')
 
 
-var routeGenero                 = require('./routes/genero');
 //Tabela matéria
 var routeMateria                = require('./routes/materia');
 //Tabela tramitar
@@ -52,10 +50,9 @@ app.use(bodyparser.urlencoded({ extended : true}));
 //set application route with server instance
 //app.use(passport.initialize())
 
-//app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+app.use('/simplex/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 
- routeGenero.configure(app);
  routeTramitar.configure(app);
  routeMateria.configure(app);
  routeSituacao.configure(app);
@@ -68,7 +65,7 @@ app.use(bodyparser.urlencoded({ extended : true}));
 // require('./api/autenticacao/passport')(passport)
 
 app.get('/', async(req, res) => {
-    res.send('foi')
+    res.send('Foi possível acessá-lo')
 })
 
 // listening application on port 8000

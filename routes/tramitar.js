@@ -32,7 +32,7 @@ module.exports = {
         });
 
         // here we update an object.
-        app.put('/rest/tramitar',  function (req, res) {
+        app.get('/rest/atualizar/tramitar',  function (req, res) {
             controller.update(req, res);
         });
 

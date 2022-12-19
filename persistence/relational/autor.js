@@ -9,6 +9,7 @@
 
 var Error = require('../../entity/error.js');
 const sequelize = require('sequelize');
+const { where } = require('sequelize');
 
 function AutorPersistence() {
     // get all objects data 
@@ -35,22 +36,25 @@ function AutorPersistence() {
                         include: [
                             [
                                 // Note the wrapping parentheses in the call below!
-                                sequelize.literal(`(
+                            sequelize.literal(`(
                                     SELECT COUNT(*)
                                     FROM materia, propoe
                                     WHERE
                                         autor.id         = propoe.idAutor
                                     AND
                                         propoe.idMateria = materia.id
-
+                                    HAVING Count(*) > 250
                                 )`),
                                 'qtde'
                             ]
+                            
                         ],
-                        exclude: ['id', 'cargo', 'updated_at', 'created_at'],
-                        group: 'nome'
-
+                        exclude: ['id', 'cargo', 'updated_at', 'created_at']
                     },
+                       // where: sequelize.where(sequelize.literal(`'qtde'`), sequelize.not),
+                        group: 'nome'
+                               
+                    
                 })
                 .then(object => {
                     res.send(JSON.parse(JSON.stringify(object)));
